@@ -12,11 +12,21 @@ public class loaderScene : MonoBehaviour {
     // Use this for initialization
     void Start () {
         async = Application.LoadLevelAsync(2);
+        async.allowSceneActivation = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        _progress.text = (async.progress * 100) + "%";
-        Debug.Log(async.progress);
-	}
+
+        while (!async.isDone && async.progress < 0.9)
+        {
+            _progress.text = (async.progress * 100) + "%";
+            Debug.Log(async.progress);
+        }
+
+
+        Debug.Log("Almost Done");
+        async.allowSceneActivation = true;
+
+    }
 }

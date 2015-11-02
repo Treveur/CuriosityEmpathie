@@ -15,6 +15,7 @@ public class Character : MonoBehaviour {
     private Rigidbody _rigid;
     private bool lightsEnabled = false;
     private float middleArmCoolDown;
+    private int nbrScreenshotTaken = 0;
 
     public AudioClip[] pinceSounds;
 
@@ -30,6 +31,8 @@ public class Character : MonoBehaviour {
         _velo.y = _rigid.velocity.y;
             //new Vector3(Input.GetAxis("Vertical") * speed, _rigid.velocity.y, 0);
         _rigid.velocity = _velo;
+
+
 
         //Rotation axis
         if(Input.GetAxis("Horizontal") != 0)
@@ -68,6 +71,14 @@ public class Character : MonoBehaviour {
                 GetComponent<AudioSource>().DOFade(0, 1.5f).OnComplete(Reson);
             }
                 
+        }
+
+        //Screenshot
+        if (Input.GetKeyUp(KeyCode.Joystick1Button5))
+        {
+            Debug.Log("Screenshot_"+nbrScreenshotTaken);
+            Application.CaptureScreenshot("ScreenShot_"+ nbrScreenshotTaken +".png");
+            nbrScreenshotTaken++;
         }
 
         //Limit character rotation on z
