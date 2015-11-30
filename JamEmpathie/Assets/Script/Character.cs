@@ -26,13 +26,16 @@ public class Character : MonoBehaviour {
 
 	void Update () {
         middleArmCoolDown -= Time.deltaTime;
+
+        /*
+
         //Velocity axis
         _velo = transform.right * Input.GetAxis("Vertical") * speed;
         _velo.y = _rigid.velocity.y;
             //new Vector3(Input.GetAxis("Vertical") * speed, _rigid.velocity.y, 0);
         _rigid.velocity = _velo;
 
-
+        */
 
         //Rotation axis
         if(Input.GetAxis("Horizontal") != 0)
@@ -81,6 +84,7 @@ public class Character : MonoBehaviour {
             nbrScreenshotTaken++;
         }
 
+        /*
         //Limit character rotation on z
         if (transform.localRotation.z < -10)
         {
@@ -89,7 +93,7 @@ public class Character : MonoBehaviour {
         else if (transform.localRotation.z > 10)
         {
             transform.DOLocalRotate(transform.localEulerAngles + new Vector3(0, 0, -10), 0.1f);
-        }
+        }*/
     }
 
     void Reson()
